@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10172b"><title>Code Starter — Learn to Code</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0b1020;color:#eef4ff;font:16px/1.5 system-ui,sans-serif}button,textarea{font:inherit}button{border:1px solid #475878;background:#263556;color:white;border-radius:10px;padding:11px 14px;cursor:pointer}button:disabled{opacity:.35}button:focus-visible,textarea:focus-visible{outline:3px solid #79e7c1}.primary{background:#79e7c1;color:#09231d;font-weight:700}.wrap{max-width:950px;padding:16px;margin:auto}header{padding:22px 4px}header h1{font-size:clamp(2.2rem,7vw,3.5rem);margin:0}header p,p{color:#c1cfe5}small{color:#a8b8d1}.layout{display:grid;grid-template-columns:225px 1fr;gap:16px}.card{background:#152039;border:1px solid #344262;border-radius:17px;padding:18px;margin-bottom:16px}.nav button{display:block;width:100%;text-align:left;margin:7px 0}.nav button.active{border-color:#79e7c1;color:#79e7c1}.progress{background:#31435f;border-radius:10px;height:8px;overflow:hidden}.progress div{height:100%;width:0;background:#79e7c1}.pill{font-size:13px;color:#79e7c1;font-weight:700}.lesson h2{margin:8px 0}.lesson pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#0b1427;color:#a8f8df;border-radius:10px;padding:12px}.tip{border-left:3px solid #b3a2ff;background:#29294b;padding:12px;margin:14px 0}.actions{display:flex;gap:8px;flex-wrap:wrap}.actions button{flex:1}.editor{display:block;min-height:200px;width:100%;background:#0a1326;border:1px solid #526388;color:#ecf7ff;padding:12px;border-radius:10px;resize:vertical;font:14px/1.55 ui-monospace,monospace}iframe{display:block;width:100%;height:220px;border:0;border-radius:10px;background:#fff;margin-top:12px}footer{text-align:center;color:#9cacc7;padding:25px}@media(max-width:700px){.layout{display:block}.nav{display:grid;grid-template-columns:1fr 1fr;gap:5px}.nav button{font-size:13px;padding:9px}}
+</style></head><body><div class="wrap"><header><div class="pill">LEARN BY MAKING THINGS ✦</div><h1>Code Starter</h1><p>Five tiny lessons to learn HTML, CSS and JavaScript. Edit the code, tap Run and see what happens. No installation required.</p></header><div class="layout"><aside class="card"><strong>Lessons</strong><nav class="nav" id="nav"></nav><div class="progress"><div id="progress"></div></div><small id="count">0 of 5 completed</small></aside><main><section class="card lesson"><div class="pill" id="tag"></div><h2 id="title"></h2><div id="intro"></div><div class="tip"><strong>Challenge:</strong> <span id="challenge"></span></div><div class="actions"><button id="prev">← Back</button><button class="primary" id="done">Mark complete ✓</button><button id="next">Next →</button></div></section><section class="card"><h2>Code playground</h2><p>Edit the code and run it. It's okay to experiment!</p><label for="editor">Your code</label><textarea class="editor" id="editor" spellcheck="false"></textarea><div class="actions" style="margin-top:10px"><button class="primary" id="run">▶ Run code</button><button id="reset">Reset example</button><button id="download">↓ Download code</button></div><h3>Live preview</h3><iframe id="preview" title="Your code preview" sandbox="allow-scripts"></iframe><small>Your code runs in a separate sandbox. You can download your modified example as an HTML file!</small></section></main></div><footer>Every developer starts somewhere. Keep experimenting! ✨</footer></div>
+<script>
+const lessons=[
+{title:"Meet HTML",tag:"1 · Structure",intro:"<p><b>HTML</b> defines what's on a webpage. Tags like <code>&lt;h1&gt;</code> make headings, and <code>&lt;p&gt;</code> makes paragraphs.</p><pre>&lt;h1&gt;Hello!&lt;/h1&gt;\n&lt;p&gt;This is my page.&lt;/p&gt;</pre>",challenge:"Change the heading to your name. Add another paragraph!",code:`<h1>Hello, world! 👋</h1>
+<p>My first webpage!</p>`},
+{title:"Style with CSS",tag:"2 · Appearance",intro:"<p><b>CSS</b> controls colors, spacing, fonts and layout. Put styles inside a <code>&lt;style&gt;</code> element.</p><pre>h1 { color: purple; }</pre>",challenge:"Change the heading color and make the button rounder.",code:`<style>
+body { font-family: system-ui; padding: 12px; }
+h1 { color: rebeccapurple; }
+button { background: aquamarine; padding: 12px; border-radius: 8px; }
+</style>
+<h1>Make it yours!</h1>
+<button>My button</button>`},
+{title:"JavaScript variables",tag:"3 · Logic",intro:"<p><b>JavaScript</b> makes webpages dynamic. Variables hold values. <code>const</code> is for values you won't reassign; <code>let</code> can change.</p><pre>const name = 'Alex';\nlet score = 10;</pre>",challenge:"Change the name, initial score and greeting.",code:`<h1 id="hello"></h1>
+<p id="points"></p>
+<script>
+const name = 'Alex';
+let score = 10;
+document.querySelector('#hello').textContent = 'Hello, ' + name + '!';
+document.querySelector('#points').textContent = 'Score: ' + score;
+<\/script>`},
+{title:"React to clicks",tag:"4 · Events",intro:"<p>An <b>event listener</b> runs your JavaScript when something happens, like tapping a button.</p><pre>button.addEventListener('click', () => {\n  // Your instructions go here\n});</pre>",challenge:"Make each tap add 5 points instead of 1.",code:`<h2>My first clicker game 🎮</h2>
+<p>Score: <strong id="score">0</strong></p>
+<button id="add">Add a point!</button>
+<script>
+let points = 0;
+document.querySelector('#add').addEventListener('click', () => {
+  points = points + 1;
+  document.querySelector('#score').textContent = points;
+});
+<\/script>`},
+{title:"Conditions and a mini-game",tag:"5 · Decisions",intro:"<p><b>if</b> statements let programs make decisions. Combine HTML, CSS and JavaScript into a tiny game!</p><pre>if (score >= 5) {\n  // Celebrate!\n} else {\n  // Keep playing!\n}</pre>",challenge:"Change the winning score from 5 to 10, and customize the message.",code:`<style>
+body { font-family: system-ui; text-align: center; }
+button { background: aquamarine; border: 0; border-radius: 10px; padding: 14px; }
+</style>
+<h2>Reach 5 points! 🚀</h2>
+<p id="message">You can do it!</p>
+<p>Score: <strong id="score">0</strong></p>
+<button id="play">Collect ⭐</button>
+<script>
+let score = 0;
+document.querySelector('#play').addEventListener('click', () => {
+  score++;
+  document.querySelector('#score').textContent = score;
+  if (score >= 5) {
+    document.querySelector('#message').textContent = 'You did it! 🎉';
+  } else {
+    document.querySelector('#message').textContent = 'Keep going!';
+  }
+});
+<\/script>`}
+];
+let current=0;const edits={},done=new Set();const $=s=>document.getElementById(s);
+function nav(){ $('nav').replaceChildren();lessons.forEach((l,i)=>{const b=document.createElement('button');b.textContent=(done.has(i)?'✓ ':'')+(i+1)+'. '+l.title;b.className=i===current?'active':'';b.onclick=()=>load(i);$('nav').append(b)});$('progress').style.width=(done.size/lessons.length*100)+'%';$('count').textContent=done.size+' of 5 completed'}
+function load(i){if($('editor').value)edits[current]=$('editor').value;current=Math.max(0,Math.min(4,i));let l=lessons[current];$('tag').textContent=l.tag;$('title').textContent=l.title;$('intro').innerHTML=l.intro;$('challenge').textContent=l.challenge;$('editor').value=edits[current]??l.code;$('prev').disabled=current===0;$('next').disabled=current===4;$('done').textContent=done.has(current)?'Completed ✓':'Mark complete ✓';nav();run()}
+function run(){edits[current]=$('editor').value;$('preview').srcdoc='<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"></head><body>'+edits[current]+'</body></html>'}
+$('run').onclick=run;$('reset').onclick=()=>{$('editor').value=lessons[current].code;run()};$('next').onclick=()=>load(current+1);$('prev').onclick=()=>load(current-1);$('done').onclick=()=>{done.add(current);$('done').textContent='Completed ✓';nav()};
+$('download').onclick=()=>{const blob=new Blob([$('editor').value],{type:'text/html'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='my-first-webpage.html';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000)};
+load(0);
+</script></body></html>
